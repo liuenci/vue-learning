@@ -22,13 +22,27 @@
         <div>{{ msg2 }}</div>
         <div v-text="msg2"></div>
         <div v-html="msg2"></div>
+
+        <!-- v-bind: 是 Vue 中提供的用于绑定属性的指令 -->
+        <input type="button" value="按钮" v-bind:title="mytitle + 123">
+        <!-- v-bind 指令可以被简写为 :要绑定的属性-->
+        <!-- v-bind 中，可以写合法的 js 表达式 -->
+        <input type="button" value="按钮" :title="mytitle + 1234">
+        <!-- Vue 中提供了 v-on: 事件绑定机制 -->
+        <input type="button" value="按钮" v-on:click="show">
     </div>
     <script>
         var vm = new Vue({
             el: '#app',
             data: {
                 msg: '123',
-                msg2: '<h1>我是H1</h1>'
+                msg2: '<h1>我是H1</h1>',
+                mytitle: '我是绑定的按钮'
+            },
+            methods: {
+                show: function(){
+                    alert('hello')
+                }
             }
         })
     </script>
